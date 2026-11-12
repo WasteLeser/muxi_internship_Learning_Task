@@ -66,27 +66,27 @@
 
   
 4. 思考以下程序在并发出现panic的原因，并解决
-    package main
-    
-    type message struct {
-        Topic     string
-        Partition int32
-        Offset    int64
-    }
+        package main
+      
+        type message struct {
+            Topic     string
+            Partition int32
+            Offset    int64
+        }
 
-    type FeedEventDM struct {
-        Type    string
-        UserID  int
-        Title   string
-        Content string
-    }
+        type FeedEventDM struct {
+            Type    string
+            UserID  int
+            Title   string
+            Content string
+        }
 
-    type MSG struct {
-        ms        message
-        feedEvent FeedEventDM
-    }
+        type MSG struct {
+            ms        message
+            feedEvent FeedEventDM
+        }
 
-    const ConsumeNum = 5
+        const ConsumeNum = 5
 
     func main() {
         var consumeMSG []MSG
