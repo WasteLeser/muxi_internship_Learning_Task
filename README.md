@@ -4,7 +4,10 @@
 
 **READ仅用于记录进度，学习内容与作业将放入文件夹用于分类与展示**
 
-个人博客已进行更新
+
+⭐ Star me on GitHub: your support motivates me a lot! 🙏
+
+个人博客在重建中
 
 <details>
 <summary>第一周主线任务</summary>
