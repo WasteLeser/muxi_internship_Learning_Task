@@ -88,13 +88,13 @@
 
         const ConsumeNum = 5
 
-    func main() {
-        var consumeMSG []MSG
-        var lastConsumeTime time.Time // 记录上次消费的时间
-        msgs := make(chan MSG)
+        func main() {
+            var consumeMSG []MSG
+            var lastConsumeTime time.Time // 记录上次消费的时间
+            msgs := make(chan MSG)
 
-        //这里源源不断的生产信息
-        go func() {
+            //这里源源不断的生产信息
+            go func() {
            for i := 0; ; i++ {
               msgs <- MSG{
                  ms: message{
