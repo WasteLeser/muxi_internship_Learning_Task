@@ -13,18 +13,21 @@
 
 发现距离上次消费已经超过5分钟且有未处理的消息时消费的物品或不足五件此时操作仍以五件进行操作，
 遂改变了消费模块的第二个分支中的
-        m := consumeMSG[:ConsumeNum]
+      `  m := consumeMSG[:ConsumeNum]`
 为
-        m := consumeMSG[:len(consumeMSG)]
+     `   m := consumeMSG[:len(consumeMSG)]`
 依旧
 
 > panic: runtime error: slice bounds out of range [:5] with capacity 3
 
 通过前面思路得到大概率仍是第二个分支内的错误，发现
-
+```
         		// 清空插入的数据
 				consumeMSG = consumeMSG[ConsumeNum:]
+```
+
 此处仍也需要修改 
+
 我将ConsumeNum更改为了len(consumeMSG)
 
 我要崩溃了。
@@ -42,13 +45,17 @@
 发现依旧是if else分支内有问题。
 
 且第二个分支内
+`
          if !lastConsumeTime.IsZero() && time.Since(lastConsumeTime) > 5*time.Minute {
-		
+`	
+
 的数字从未被输出过
 
 我检查了条件，好吧好像我没找出来而且panic是切片那边的
 
 顺便我看到了第一个分支
+
+```
     	if len(consumeMSG) >= ConsumeNum {
 			//进行异步消费
 			go func() {
@@ -60,6 +67,8 @@
 			// 清除插入的数据
 			consumeMSG = consumeMSG[ConsumeNum:]
 		}
+```
+
 内有一个我学习协程时被经常提到的警告，go内外都有使用consumeMSG
 
 哦我看懂了，我尝试把m移出来变成consumeMSG的一份copy
