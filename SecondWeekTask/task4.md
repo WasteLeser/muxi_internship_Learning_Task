@@ -16,11 +16,11 @@
 
 遂改变了消费模块的第二个分支中的
 
-      `  m := consumeMSG[:ConsumeNum]`
+`  m := consumeMSG[:ConsumeNum]`
 	  
 为
 
-     `   m := consumeMSG[:len(consumeMSG)]`
+`   m := consumeMSG[:len(consumeMSG)]`
 
 依旧
 
@@ -29,8 +29,8 @@
 通过前面思路得到大概率仍是第二个分支内的错误，发现
 
 ```
-        		// 清空插入的数据
-				consumeMSG = consumeMSG[ConsumeNum:]
+// 清空插入的数据
+consumeMSG = consumeMSG[ConsumeNum:]
 ```
 
 此处仍也需要修改 
@@ -54,7 +54,7 @@
 且第二个分支内
 
 `
-         if !lastConsumeTime.IsZero() && time.Since(lastConsumeTime) > 5*time.Minute {
+ if !lastConsumeTime.IsZero() && time.Since(lastConsumeTime) > 5*time.Minute {
 `	
 
 的数字从未被输出过
