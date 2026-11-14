@@ -5,6 +5,7 @@
 一眼切片超过容量了
 
 又发现常量ConsumeNum = 5
+
 通过ctrl+点击的方式查看用到该常量的切片有consumeMSG[]
 
 我看不懂了，开始阅读整体代码。。。
@@ -12,15 +13,21 @@
 大致理解了代码
 
 发现距离上次消费已经超过5分钟且有未处理的消息时消费的物品或不足五件此时操作仍以五件进行操作，
+
 遂改变了消费模块的第二个分支中的
+
       `  m := consumeMSG[:ConsumeNum]`
+	  
 为
+
      `   m := consumeMSG[:len(consumeMSG)]`
+
 依旧
 
 > panic: runtime error: slice bounds out of range [:5] with capacity 3
 
 通过前面思路得到大概率仍是第二个分支内的错误，发现
+
 ```
         		// 清空插入的数据
 				consumeMSG = consumeMSG[ConsumeNum:]
@@ -45,6 +52,7 @@
 发现依旧是if else分支内有问题。
 
 且第二个分支内
+
 `
          if !lastConsumeTime.IsZero() && time.Since(lastConsumeTime) > 5*time.Minute {
 `	
@@ -74,7 +82,9 @@
 哦我看懂了，我尝试把m移出来变成consumeMSG的一份copy
 
 但我不太会啊，我百度了一下。
+
 这是更改后
+```
 		if len(consumeMSG) >= ConsumeNum {
 			m := append([]MSG(nil), consumeMSG[:ConsumeNum]...)
 			//进行异步消费
@@ -86,6 +96,7 @@
 			// 清除插入的数据
 			consumeMSG = consumeMSG[ConsumeNum:]
 		}
+```
 我又发现第二个分支是一样的问题，
 
 更改后代码发现能够运行了
