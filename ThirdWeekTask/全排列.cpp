@@ -10,18 +10,18 @@ void dfs(int k)
     {
         int i;
         for(i=1;i<=n;i++)
-        printf("%d ",used[i]);
+        printf("%d ",a[i]);
         cout<<endl;
         return;
     }
     for(i=1;i<=n;i++)
     {
-        if(!a[i])
+        if(!used[i])
         {
-            a[i]=1;
-            used[k+1]=i;
+            used[i]=1;
+            a[k+1]=i;
             dfs(k+1);
-            a[i]=0;
+            used[i]=0;
         }
     }
 }
