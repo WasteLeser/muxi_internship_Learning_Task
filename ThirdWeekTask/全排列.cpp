@@ -8,9 +8,9 @@ void dfs(int k)
     int i;
     if(k==n)
     {
-        int i;
-        for(i=1;i<=n;i++)
-        printf("%d ",a[i]);
+        int j;
+        for(j=1;j<=n;j++)
+        printf("%d ",a[j]);
         cout<<endl;
         return;
     }
