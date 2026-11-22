@@ -11,7 +11,7 @@ void dfs(int k)
         int i;
         for(i=1;i<=n;i++)
         printf("%d ",used[i]);
-         cout<<endl;
+        cout<<endl;
         return;
     }
     for(i=1;i<=n;i++)
