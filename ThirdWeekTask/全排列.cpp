@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n,pd[100],used[100];
+int n,a[100],used[100];
 
 
 void dfs(int k)
@@ -16,12 +16,12 @@ void dfs(int k)
     }
     for(i=1;i<=n;i++)
     {
-        if(!pd[i])
+        if(!a[i])
         {
-            pd[i]=1;
+            a[i]=1;
             used[k+1]=i;
             dfs(k+1);
-            pd[i]=0;
+            a[i]=0;
         }
     }
 }
