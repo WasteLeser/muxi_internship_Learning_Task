@@ -22,8 +22,6 @@ func main() {
 	fmt.Println(string(resbody))
 
 	// seqs := []int{1,2,3,4,5,6,7,8,9,10}
-	// ch := make(chan string, len(seqs))
-
 	// for _, seq := range seqs {
 	// 	go func(n int) {
 	// 		body := strings.NewReader(fmt.Sprintf(`{"seq":%d}`, n))
