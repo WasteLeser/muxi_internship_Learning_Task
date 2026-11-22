@@ -6,6 +6,10 @@ import (
 	"github.com/weiji6/hacker-support/httptool"
 )
 
+
+//没有在仓库中改相对路径。。
+
+
 func main() {
 	req, _ := http.NewRequest("GET", "https://gtainmuxi.muxixyz.com/api/v1/organization/code", nil)
 	req.Header.Set("code", "0")
