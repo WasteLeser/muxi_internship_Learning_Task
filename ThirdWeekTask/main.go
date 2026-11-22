@@ -83,7 +83,7 @@ func main() {
 	// respbody, _ := io.ReadAll(resp6.Body)
 	// fmt.Println(string(respbody))
 
-	req7, _ := httptool.NewRequest(httptool.POSTMETHOD, "https://http-theft-bank.gtainccnu.muxixyz.com/api/v1/bank/iris_recognition_gate", "E:/Code/gojohnygo/全排列.go", httptool.FILE)
+	req7, _ := httptool.NewRequest(httptool.POSTMETHOD, "https://http-theft-bank.gtainccnu.muxixyz.com/api/v1/bank/iris_recognition_gate", "E:/Code/gojohnygo/全排列.cpp", httptool.FILE)
 	req7.AddHeader("passport", passport)
 	resp7, _ := req7.SendRequest()
 	resp7.ShowBody()
