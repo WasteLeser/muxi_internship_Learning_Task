@@ -2,6 +2,7 @@
 
     import (
     	"sort"
+		"fmt"
     )
 
     type Student struct {
